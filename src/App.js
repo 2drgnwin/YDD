@@ -1,39 +1,25 @@
-const costObj = {
-  Brian: 5000,
-  Tom: 103000,
-  James: 24000,
-};
-const names = Object.keys(costObj);
-const name = 'Tom';
+import React from 'react';
+import './App.css';
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import Support from './pages/Support';
+import Messages from './pages/Messages';
 
 function App() {
   return (
-    <div className="">
-      <head></head>
-
-      <body>
-        HELLO YDD
-        <table class="table table-bordered">
-          <thead>
-            <tr class="table-primary">
-              <th>Name</th>
-              <th>Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            {names.map((name) => {
-              return (
-                <tr>
-                  <td>{name}</td>
-                  <td>{costObj[name]}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <button class="btn btn-primary">push</button>
-      </body>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/Dashboard" component={Dashboard} />
+          <Route path="/Messages" component={Messages} />
+          <Route path="/Support" component={Support} />
+        </Switch>
+      </Router>
+    </>
   );
 }
 
